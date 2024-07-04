@@ -4,6 +4,7 @@ import pandas as pd
 import pickle
 from streamlit_option_menu import option_menu
 import os
+import joblib
 
 st.sidebar.title("Crop Yield Predictor")
 
@@ -73,9 +74,9 @@ By following these steps, you can leverage the power of machine learning to get 
 
 if selected == "Crop Yield Predictor":
 
-    # Load the model from the pickle file
-    with open('ensemble.sav', 'rb') as file:
-        ensemble = pickle.load(file)
+    # Loading all the models
+    working_dir = os.path.dirname(os.path.abspath(__file__))
+    ensemble = pickle.load(open(f'{working_dir}/ensemble.sav', 'rb'))
 
     # Define the options for each dropdown
     states = ['Andaman and Nicobar Islands', 'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chandigarh', 'Chhattisgarh', 
