@@ -76,7 +76,7 @@ if selected == "Crop Yield Predictor":
 
     # Loading all the models
     working_dir = os.path.dirname(os.path.abspath(__file__))
-    ensemble = pickle.load(open(f'{working_dir}/ensemble.sav', 'rb'))
+    ensemble = pickle.load(open(f'{working_dir}/Crop_Model.sav', 'rb'))
 
     # Define the options for each dropdown
     states = ['Andaman and Nicobar Islands', 'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chandigarh', 'Chhattisgarh', 
