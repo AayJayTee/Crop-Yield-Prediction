@@ -5,6 +5,26 @@ import pickle
 from streamlit_option_menu import option_menu
 import os
 import joblib
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
+# Loading all the models
+working_dir = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(working_dir, 'Crop_Model.sav')
+
+# Check if the model file exists
+if not os.path.exists(model_path):
+    logging.error(f"Model file not found at {model_path}")
+else:
+    try:
+        with open(model_path, 'rb') as model_file:
+            ensemble = pickle.load(model_file)
+        logging.info("Model loaded successfully")
+    except Exception as e:
+        logging.error(f"Error loading model: {e}")
+
+# Continue with your Streamlit app code...
 
 st.sidebar.title("Crop Yield Predictor")
 
