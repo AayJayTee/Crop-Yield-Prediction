@@ -74,9 +74,8 @@ By following these steps, you can leverage the power of machine learning to get 
 
 if selected == "Crop Yield Predictor":
 
-    # Loading all the models
-    working_dir = os.path.dirname(os.path.abspath(__file__))
-    ensemble = pickle.load(open(os.path.join(working_dir, 'Crop_Model.sav'), 'rb'))
+    from joblib import load
+    ensemble = load('ensemble.joblib')  # Load your model
 
     # Define the options for each dropdown
     states = ['Andaman and Nicobar Islands', 'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chandigarh', 'Chhattisgarh', 
@@ -126,3 +125,4 @@ if selected == "Crop Yield Predictor":
             # Display prediction
             st.header('Predicted Crop Yield')
             st.write(f'The predicted yield for the selected inputs is: {predicted_yield:.2f} tons/hectare')
+    
